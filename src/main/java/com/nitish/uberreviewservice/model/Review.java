@@ -16,28 +16,21 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@EntityListeners(AuditingEntityListener.class)
 @Table(name="t_review")
-public class Review {
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 
-    @Id  // this annotation make the id property a primary key of our table
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // identity means auto_increament
-    Long id;
 
-    @Column(nullable = false)
-    String content;
+public class Review extends BaseModel{
 
-    Double rating;
 
     @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP) // // this annotation tell spring the formate of date object to be stored i.e Date/Time ? Timestamp
-    @CreatedDate    // this annotation tells spring that only handle it for  object creation
-    Date createdAt;
+    private   String content;
 
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate       // this annotation tells spring that only handle it for  object updation
-    Date updatedAt;
+    private Double rating;
+
+
 
 
 }

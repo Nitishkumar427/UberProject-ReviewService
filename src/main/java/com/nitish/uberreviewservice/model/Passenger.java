@@ -1,6 +1,7 @@
 package com.nitish.uberreviewservice.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.*;
 
@@ -17,6 +18,6 @@ public class Passenger extends  BaseModel{
 
     private  String name;
 
-    @OneToOne(mappedBy = "passenger")
+    @OneToMany(mappedBy = "passenger")
     private List<Booking> bookings=new ArrayList<>();
 }
